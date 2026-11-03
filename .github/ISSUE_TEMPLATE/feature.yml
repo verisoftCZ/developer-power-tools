@@ -1,0 +1,21 @@
+name: Feature request
+description: Suggest an operation or improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Synthetic input and expected output
+      description: Include type, encoding, parameters and error expectations where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Existing workflow or alternatives

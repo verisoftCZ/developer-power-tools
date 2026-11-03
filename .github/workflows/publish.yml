@@ -1,0 +1,41 @@
+name: Publish to VS Code Marketplace
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing version tag to test and publish (for example v0.1.5)'
+        type: string
+        required: true
+permissions:
+  contents: read
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: ${{ format('refs/tags/{0}', inputs.tag) }}
+  publish:
+    needs: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: marketplace
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ format('refs/tags/{0}', inputs.tag) }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run release:check
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: extension-vsix
+      - run: sha256sum --check SHA256SUMS
+      - name: Publish verified artifact using trusted publishing
+        run: npx vsce publish --packagePath ./*.vsix --oidc

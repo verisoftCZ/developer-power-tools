@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "example-escaped-fields",
+  "name": "Decode escaped JSON fields",
+  "steps": [
+    {
+      "id": "decode",
+      "operationId": "json.decodeFields",
+      "enabled": true,
+      "params": { "depth": 32 }
+    }
+  ]
+}

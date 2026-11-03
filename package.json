@@ -1,0 +1,139 @@
+{
+  "name": "developer-power-tools",
+  "displayName": "Developer Power Tools",
+  "description": "Offline data transformations with reusable recipes, JSON inspection and binary-safe tools.",
+  "version": "0.1.5",
+  "publisher": "verisoftcz",
+  "author": "verisoftCZ",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/verisoftCZ/developer-power-tools.git"
+  },
+  "homepage": "https://github.com/verisoftCZ/developer-power-tools#readme",
+  "bugs": {
+    "url": "https://github.com/verisoftCZ/developer-power-tools/issues"
+  },
+  "icon": "resources/icon.png",
+  "keywords": [
+    "json",
+    "yaml",
+    "base64",
+    "jwt",
+    "offline",
+    "recipes",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.cjs",
+  "extensionKind": [
+    "workspace"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": false
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "powertools.open",
+        "title": "Developer Power Tools: Open"
+      },
+      {
+        "command": "powertools.openSelection",
+        "title": "Developer Power Tools: Open Selection"
+      },
+      {
+        "command": "powertools.replaceSelection",
+        "title": "Developer Power Tools: Replace Original Selection"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "powertools.openSelection",
+          "when": "editorHasSelection",
+          "group": "navigation@100"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "powertools.openSelection",
+        "key": "ctrl+alt+t",
+        "mac": "cmd+alt+t",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Developer Power Tools",
+      "properties": {
+        "powertools.maxInputMB": {
+          "type": "number",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Maximum input and intermediate output size in MiB."
+        },
+        "powertools.timeoutMs": {
+          "type": "number",
+          "default": 10000,
+          "minimum": 100,
+          "maximum": 60000,
+          "description": "Worker execution deadline."
+        },
+        "powertools.graphNodeLimit": {
+          "type": "number",
+          "default": 300,
+          "minimum": 10,
+          "maximum": 1000,
+          "description": "Maximum JSON graph nodes."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "tsx --test tests/unit/*.test.ts",
+    "test:integration": "node scripts/integration.mjs",
+    "test:e2e": "playwright test",
+    "benchmark": "tsx scripts/benchmark.ts",
+    "vscode:prepublish": "npm run build",
+    "package": "vsce package --no-dependencies --githubBranch main",
+    "package:check": "node scripts/check-package.mjs",
+    "release:check": "node scripts/check-release.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "docs:check": "node scripts/check-docs.mjs",
+    "verify": "npm run format:check && npm run check && npm run docs:check && npm run release:check && npm run build && npm test && npm run package:check",
+    "icon": "node scripts/generate-icon.mjs",
+    "spike:cyberchef": "node scripts/cyberchef-spike.mjs"
+  },
+  "overrides": {
+    "@vscode/vsce": {
+      "minimatch": "^11.0.1"
+    }
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^22.0.0",
+    "@types/vscode": "1.99.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^4.1.0",
+    "esbuild": "^0.25.0",
+    "prettier": "3.9.10",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "dependencies": {
+    "yaml": "2.9.1"
+  }
+}

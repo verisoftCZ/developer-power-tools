@@ -1,0 +1,12 @@
+**
+!dist/extension.cjs
+!dist/worker.cjs
+!dist/ui.*
+!package.json
+!README.md
+!LICENSE
+!CHANGELOG.md
+!resources/icon.png
+!docs/operations.md
+!docs/workbench.png
+!docs/THIRD-PARTY-NOTICES.md

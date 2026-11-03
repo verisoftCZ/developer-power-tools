@@ -1,0 +1,665 @@
+:root {
+  color-scheme: light dark;
+  font-family: var(--vscode-font-family, system-ui);
+  font-size: var(--vscode-font-size, 13px);
+  color: var(--vscode-foreground, #d5d9e2);
+  background: var(--vscode-editor-background, #15171c);
+  --border: var(--vscode-panel-border, #34373d);
+  --muted: var(--vscode-descriptionForeground, #9197a4);
+  --accent: var(--vscode-button-background, #087f8c);
+  --surface: var(--vscode-sideBar-background, #1d2027);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--vscode-button-secondaryBackground, #282d36);
+  color: var(--vscode-button-secondaryForeground, #ddd);
+  border-radius: 4px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+button:hover {
+  background: var(--vscode-button-secondaryHoverBackground, #363c46);
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+:focus-visible {
+  outline: 2px solid var(--vscode-focusBorder, #50bdcd);
+  outline-offset: 2px;
+}
+input,
+textarea,
+select {
+  color: var(--vscode-input-foreground, #ddd);
+  background: var(--vscode-input-background, #20242b);
+  border: 1px solid var(--vscode-input-border, var(--border));
+  border-radius: 4px;
+  padding: 7px 9px;
+}
+input[type='checkbox'] {
+  accent-color: var(--accent);
+  width: 15px;
+  height: 15px;
+}
+header {
+  height: 76px;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.brand-icon {
+  font-size: 30px;
+  color: var(--vscode-textLink-foreground, #58bec8);
+}
+.brand strong {
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.privacy {
+  font-size: 11px;
+  color: var(--muted);
+}
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--vscode-testing-iconPassed, #56bb9c);
+  border-radius: 50%;
+  margin-right: 6px;
+}
+nav {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.spacer {
+  flex: 1;
+}
+.divider {
+  height: 22px;
+  width: 1px;
+  background: var(--border);
+  margin: 0 3px;
+}
+.toggle {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-right: 8px;
+}
+.primary {
+  background: var(--accent);
+  color: var(--vscode-button-foreground, #fff);
+  border-color: transparent;
+}
+.primary:hover {
+  background: var(--vscode-button-hoverBackground, #1394a1);
+}
+kbd {
+  font-size: 10px;
+  opacity: 0.65;
+  margin-left: 12px;
+}
+main {
+  display: flex;
+  height: calc(100vh - 166px);
+  min-height: 400px;
+  padding: 16px 20px;
+  gap: 0;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  flex: 1 1 32%;
+  background: var(--vscode-editor-background);
+}
+.recipe-column {
+  flex: 1 1 30%;
+  background: var(--surface);
+}
+.output-column {
+  flex: 1.25 1 38%;
+}
+.splitter {
+  width: 12px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  position: relative;
+}
+.splitter:hover:after,
+.splitter:focus:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  bottom: 10px;
+  border-left: 2px solid var(--vscode-focusBorder);
+}
+.section-head {
+  height: 52px;
+  min-height: 52px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+h2 {
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+}
+h2 span {
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: 10px;
+  color: var(--muted);
+}
+.tag {
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  padding: 4px 6px;
+  background: var(--vscode-badge-background, #30333b);
+  border-radius: 3px;
+  color: var(--vscode-badge-foreground, #bbb);
+}
+.subbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  min-height: 45px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+}
+.subbar button {
+  font-size: 11px;
+  padding: 4px 7px;
+}
+.input-column textarea {
+  flex: 1;
+  resize: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 18px;
+  line-height: 1.7;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--vscode-editor-font-size, 13px);
+  min-height: 200px;
+  white-space: pre;
+  overflow: auto;
+}
+.input-column textarea::placeholder {
+  color: var(--muted);
+  white-space: normal;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: auto;
+}
+.recipe-column {
+  overflow-y: auto;
+}
+.recipe-column footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--surface);
+}
+#recipe-name {
+  margin: 12px 12px 0;
+  background: transparent;
+  border-color: transparent;
+  font-weight: 600;
+}
+#recipe-name:hover,
+#recipe-name:focus {
+  border-color: var(--border);
+}
+#steps {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.step {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--vscode-editor-background);
+}
+.step.disabled {
+  opacity: 0.55;
+}
+.step-head {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.step-number {
+  color: var(--muted);
+  font-family: monospace;
+  font-size: 10px;
+}
+.step-head strong {
+  flex: 1;
+  font-size: 12px;
+}
+.icon-button {
+  padding: 2px 4px;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+}
+.parameter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.parameter input:not([type='checkbox']),
+.parameter select {
+  max-width: 52%;
+  min-width: 60px;
+  padding: 4px;
+  font-size: 11px;
+}
+.step-description {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+.step-status {
+  font-size: 10px;
+  color: var(--vscode-testing-iconPassed, #71b69b);
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+.recipe-empty {
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 5px;
+  padding: 22px 15px;
+  line-height: 1.7;
+  text-align: center;
+  font-size: 12px;
+}
+.operation-picker {
+  padding: 4px 12px 12px;
+}
+.operation-picker > label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  color: var(--muted);
+  margin: 5px 0 10px;
+}
+#search {
+  width: 100%;
+  font-size: 12px;
+}
+#operations {
+  margin-top: 8px;
+  max-height: 310px;
+  overflow: auto;
+}
+.operation {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+  width: 100%;
+  padding: 10px 26px 10px 10px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+}
+.operation > span {
+  font-size: 12px;
+}
+.operation small {
+  font-size: 9px;
+  color: var(--muted);
+}
+.operation .plus {
+  position: absolute;
+  right: 8px;
+  top: 14px;
+  color: var(--muted);
+}
+.tabs {
+  gap: 4px;
+  justify-content: flex-start;
+}
+.tabs button {
+  border: 0;
+  background: transparent;
+}
+.tabs [aria-selected='true'] {
+  background: var(--vscode-tab-activeBackground, #343944);
+  color: var(--vscode-textLink-foreground, #67c1ce);
+}
+.output-actions {
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+.output-actions button {
+  font-size: 10px;
+}
+.output-actions input {
+  font-size: 10px;
+  width: 80px;
+  min-width: 50px;
+}
+#viewer {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  min-height: 200px;
+}
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  height: 100%;
+  padding: 25px;
+  text-align: center;
+}
+.empty-icon {
+  font-size: 38px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  width: 66px;
+  height: 66px;
+  line-height: 62px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+.empty h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+.empty p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0 0 20px;
+}
+.empty button {
+  font-size: 11px;
+}
+.output-text {
+  padding: 18px;
+  margin: 0;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: var(--vscode-editor-font-size, 12px);
+  line-height: 1.7;
+  tab-size: 2;
+  white-space: pre;
+  overflow: visible;
+}
+.viewer-hint {
+  padding: 20px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.warning {
+  padding: 10px;
+  margin: 8px;
+  font-size: 11px;
+  border-left: 2px solid var(--vscode-editorWarning-foreground, #d8b665);
+  color: var(--vscode-editorWarning-foreground, #d8b665);
+}
+.error {
+  color: var(--vscode-errorForeground, #f48771) !important;
+}
+.muted {
+  color: var(--muted);
+}
+.tree {
+  padding: 12px;
+  font-family: var(--vscode-editor-font-family, monospace);
+  font-size: 12px;
+  line-height: 1.9;
+}
+.tree details {
+  padding-left: 14px;
+}
+.tree summary {
+  cursor: pointer;
+  color: var(--vscode-symbolIcon-objectForeground, #a0c8df);
+}
+.tree-leaf {
+  margin-left: 18px;
+  white-space: pre;
+  max-width: 900px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.match,
+mark {
+  background: var(--vscode-editor-findMatchHighlightBackground, #644f13);
+  color: inherit;
+}
+.viewer-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.viewer-controls button {
+  font-size: 10px;
+}
+.viewer-controls small {
+  font-size: 10px;
+  color: var(--muted);
+}
+.graph-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 100%;
+  min-height: 300px;
+}
+.graph-wrapper > .viewer-controls {
+  flex-shrink: 0;
+}
+.graph-zoom {
+  font-size: 10px;
+  color: var(--muted);
+  min-width: 40px;
+}
+.graph {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: 0;
+  min-height: 200px;
+  cursor: grab;
+  touch-action: none;
+}
+.edge {
+  stroke: var(--vscode-descriptionForeground, #889);
+  stroke-width: 1;
+  fill: none;
+}
+.graph-node {
+  cursor: pointer;
+}
+.graph-node rect {
+  fill: var(--vscode-input-background, #303642);
+  stroke: var(--vscode-panel-border, #555);
+}
+.graph-node text {
+  fill: var(--vscode-foreground, #ddd);
+  font-family: monospace;
+  font-size: 11px;
+}
+.graph-node.match rect {
+  stroke: var(--vscode-editorWarning-foreground, #e1b85e);
+  stroke-width: 3;
+}
+#status {
+  padding: 5px 20px 10px;
+  min-height: 25px;
+  font-size: 11px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1000px) {
+  header {
+    padding: 14px;
+  }
+  .privacy {
+    display: none;
+  }
+  nav {
+    padding: 8px;
+    gap: 4px;
+  }
+  nav button {
+    padding: 5px 7px;
+    font-size: 11px;
+  }
+  kbd {
+    display: none;
+  }
+  main {
+    padding: 10px;
+    height: calc(100vh - 160px);
+  }
+  .column {
+    min-width: 200px;
+  }
+  .splitter {
+    width: 8px;
+  }
+  .parameter {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 720px) {
+  body {
+    overflow: auto;
+  }
+  main {
+    display: block;
+    height: auto;
+    min-height: 0;
+  }
+  .column {
+    width: 100%;
+    min-height: 380px;
+    max-height: 650px;
+    margin-bottom: 12px;
+  }
+  .input-column {
+    height: 400px;
+  }
+  .output-column {
+    height: 500px;
+  }
+  .splitter {
+    display: none;
+  }
+  header {
+    height: 66px;
+  }
+  .spacer {
+    display: none;
+  }
+  #status {
+    position: sticky;
+    bottom: 0;
+    background: var(--surface);
+  }
+  .recipe-column {
+    max-height: none;
+  }
+}
+@media (forced-colors: active) {
+  button,
+  .step,
+  .column,
+  input,
+  textarea,
+  select {
+    border: 1px solid ButtonText;
+  }
+  .dot {
+    background: Highlight;
+  }
+  .tag {
+    border: 1px solid CanvasText;
+  }
+  .graph-node rect {
+    fill: Canvas;
+    stroke: CanvasText;
+  }
+  .graph-node text {
+    fill: CanvasText;
+  }
+}

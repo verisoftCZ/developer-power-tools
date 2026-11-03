@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "example-base64-json",
+  "name": "Base64 to JSON",
+  "steps": [
+    {
+      "id": "decode",
+      "operationId": "base64.text",
+      "enabled": true,
+      "params": { "alphabet": "standard", "strict": true }
+    },
+    { "id": "parse", "operationId": "json.parse", "enabled": true, "params": {} }
+  ]
+}

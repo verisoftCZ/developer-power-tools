@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-02T21:16:52.298Z",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-12700H",
+  "decodedBytes": 1048576,
+  "samples": 25,
+  "native": {
+    "p50Ms": 2.691300000000183,
+    "p95Ms": 2.923300000000154
+  },
+  "workerIncludingStartup": {
+    "p50Ms": 78.02109999999993,
+    "p95Ms": 84.62950000000001
+  },
+  "cancelThroughTerminationMs": 4.165599999999813,
+  "rssBytes": 123211776,
+  "notes": "RSS is a snapshot, not high-water mark. Panel rendering not measured."
+}

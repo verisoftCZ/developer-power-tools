@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible problem using synthetic input.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 'Do not include real JWTs, passwords, personal data or private documents. Report vulnerabilities through the security policy.'
+  - type: input
+    id: versions
+    attributes:
+      label: Extension, VS Code and operating-system versions
+      placeholder: '0.1.5 / VS Code 1.99 / Windows 11'
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps, recipe and synthetic input
+      description: Include the smallest example that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or sanitized errors

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.spike/
+.vscode-test/
+test-results/
+playwright-report/
+coverage/
+artifacts/
+package-lock.json
+*.vsix
+*.log
+SHA256SUMS
+.tools/

@@ -1,0 +1,28 @@
+{
+  "node": "v24.15.0",
+  "version": "11.5.0",
+  "date": "2026-11-02T21:14:52.903Z",
+  "metadata": {
+    "version": "11.5.0",
+    "main": "src/node/wrapper.js",
+    "exports": {
+      "import": "./src/node/index.mjs",
+      "require": "./src/node/wrapper.js"
+    },
+    "engines": {
+      "node": ">=24 <27"
+    },
+    "license": "Apache-2.0",
+    "dist.unpackedSize": 20659500,
+    "dist.integrity": "sha512-EsclfT09jkxWSp7+j0lPmorVDSuiJcCqe6G5RlglV2mWzav3EKrVn25gLKhMyHu7EStCAsRWJbnmj/97oMNA2A=="
+  },
+  "install": "pass",
+  "runtime": {
+    "passed": false,
+    "error": "Cannot find module '<repository>\\.spike\\node_modules\\crypto-api\\src\\hasher\\has160' imported from <repository>\\.spike\\node_modules\\crypto-api\\src\\crypto-api.mjs"
+  },
+  "bundle": {
+    "passed": false,
+    "error": "Build failed with 30 errors:\n.spike/node_modules/argon2-browser/lib/argon2.js:82:43: ERROR: No loader is configured for \".wasm\" files: .spike/node_modules/argon2-browser/dist/argon2.wasm\n.spike/node_modules/crypto-api/src/crypto-api.mjs:3:19: ERROR: Could not resolve \"./hasher/has160\"\n.spike/node_modules/crypto-api/src/crypto-api.mjs:4:16: ERROR: Could not resolve \"./hasher/md2\"\n.spike/node_modules/crypto-api/src/crypto-api.mjs:5:16: ERROR: Could not resolve \"./hasher/md4\"\n.spike/node_modules/crypto-api/src/crypto-api.mjs:6:16: ERROR: Could not resolve \"./hasher/md5\"\n..."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "example-yaml-json",
+  "name": "YAML to formatted JSON",
+  "steps": [
+    { "id": "parse", "operationId": "yaml.json", "enabled": true, "params": {} },
+    { "id": "format", "operationId": "json.pretty", "enabled": true, "params": { "indent": "2" } }
+  ]
+}
